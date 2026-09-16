@@ -52,6 +52,10 @@
 			</dict>
 			<dict>
 				<key>Script</key>
+				<string>tab-search.js</string>
+			</dict>
+			<dict>
+				<key>Script</key>
 				<string>mousetrap.js</string>
 			</dict>
 			<dict>

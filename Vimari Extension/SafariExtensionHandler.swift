@@ -6,6 +6,8 @@ enum ActionType: String {
     case tabBackward
     case closeTab
     case updateSettings
+    case requestTabList
+    case activateTab
 }
 
 enum InputAction: String {
@@ -61,6 +63,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             closeTab(from: page)
         case .updateSettings:
             updateSettings(page: page)
+        case .requestTabList:
+            sendTabList(to: page)
+        case .activateTab:
+            if let index = userInfo?["index"] as? Int {
+                activateTab(atIndex: index, from: page)
+            }
         case .none:
             NSLog("Received message with unsupported type: \(messageName)")
         }
@@ -134,7 +142,56 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             tab.close()
         }
     }
-    
+
+    /**
+     Fetches the title and URL of every tab in the current window and sends them back to the
+     content script as a "tabListResult" message, keyed by their position in the tab strip so the
+     script can later ask us to activate one by that same index (see `activateTab`).
+     */
+    private func sendTabList(to page: SFSafariPage) {
+        self.currentWindow(from: page) { window in
+            window?.getAllTabs() { tabs in
+                if tabs.isEmpty {
+                    page.dispatchMessageToScript(withName: "tabListResult", userInfo: ["tabs": []])
+                    return
+                }
+
+                let group = DispatchGroup()
+                var tabInfoByIndex = [Int: [String: Any]]()
+                let syncQueue = DispatchQueue(label: "net.televator.vimari.tabList")
+
+                for (index, tab) in tabs.enumerated() {
+                    group.enter()
+                    tab.getActivePage { activePage in
+                        activePage?.getPropertiesWithCompletionHandler { properties in
+                            let info: [String: Any] = [
+                                "index": index,
+                                "title": properties?.title ?? "",
+                                "url": properties?.url?.absoluteString ?? ""
+                            ]
+                            syncQueue.sync { tabInfoByIndex[index] = info }
+                            group.leave()
+                        }
+                    }
+                }
+
+                group.notify(queue: .main) {
+                    let orderedTabs = (0..<tabs.count).compactMap { tabInfoByIndex[$0] }
+                    page.dispatchMessageToScript(withName: "tabListResult", userInfo: ["tabs": orderedTabs])
+                }
+            }
+        }
+    }
+
+    private func activateTab(atIndex index: Int, from page: SFSafariPage) {
+        self.currentWindow(from: page) { window in
+            window?.getAllTabs() { tabs in
+                guard index >= 0 && index < tabs.count else { return }
+                tabs[index].activate(completionHandler: {})
+            }
+        }
+    }
+
     // MARK: Settings
 
     private func getSetting(_ settingKey: String) -> Any? {

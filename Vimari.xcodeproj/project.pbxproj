@@ -24,6 +24,7 @@
 		E380F2672331806500640547 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E380F2652331806500640547 /* SafariExtensionViewController.xib */; };
 		E380F26C2331806500640547 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E380F26B2331806500640547 /* ToolbarItemIcon.pdf */; };
 		E380F283233183EF00640547 /* link-hints.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F278233183EE00640547 /* link-hints.js */; };
+		683FA659F9307977FCD4C358 /* tab-search.js in Resources */ = {isa = PBXBuildFile; fileRef = D028BBBB2638FCB66AA95FF6 /* tab-search.js */; };
 		E380F285233183EF00640547 /* injected.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27A233183EE00640547 /* injected.js */; };
 		E380F286233183EF00640547 /* mocks.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27B233183EE00640547 /* mocks.js */; };
 		E380F287233183EF00640547 /* keyboard-utils.js in Resources */ = {isa = PBXBuildFile; fileRef = E380F27C233183EE00640547 /* keyboard-utils.js */; };
@@ -79,6 +80,7 @@
 		E380F26B2331806500640547 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		E380F26D2331806500640547 /* Vimari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vimari_Extension.entitlements; sourceTree = "<group>"; };
 		E380F278233183EE00640547 /* link-hints.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "link-hints.js"; sourceTree = "<group>"; };
+		D028BBBB2638FCB66AA95FF6 /* tab-search.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "tab-search.js"; sourceTree = "<group>"; };
 		E380F27A233183EE00640547 /* injected.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = injected.js; sourceTree = "<group>"; };
 		E380F27B233183EE00640547 /* mocks.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = mocks.js; sourceTree = "<group>"; };
 		E380F27C233183EE00640547 /* keyboard-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "keyboard-utils.js"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				E380F278233183EE00640547 /* link-hints.js */,
+				D028BBBB2638FCB66AA95FF6 /* tab-search.js */,
 				E380F27A233183EE00640547 /* injected.js */,
 				E380F27B233183EE00640547 /* mocks.js */,
 				E380F27C233183EE00640547 /* keyboard-utils.js */,
@@ -307,6 +310,7 @@
 				E380F2672331806500640547 /* SafariExtensionViewController.xib in Resources */,
 				E380F286233183EF00640547 /* mocks.js in Resources */,
 				E380F283233183EF00640547 /* link-hints.js in Resources */,
+				683FA659F9307977FCD4C358 /* tab-search.js in Resources */,
 				E380F288233183EF00640547 /* mousetrap.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

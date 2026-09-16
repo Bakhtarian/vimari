@@ -21,6 +21,12 @@ var SafariExtensionCommunicator = (function (msgHandler) {
     publicAPI.requestCloseTab = function () {
         sendMessage("closeTab")
     }
+    publicAPI.requestTabList = function() {
+        sendMessage("requestTabList")
+    }
+    publicAPI.requestActivateTab = function(index) {
+        safari.extension.dispatchMessage("activateTab", { index: index })
+    }
 
     // Return only the public methods.
     return publicAPI;

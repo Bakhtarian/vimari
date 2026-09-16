@@ -86,7 +86,13 @@ var actionMap = {
 		function() { customScrollBy(0, -document.body.scrollHeight); },
 
 	'goToFirstInput':
-		function() { goToFirstInput(); }
+		function() { goToFirstInput(); },
+
+	'tabSearch':
+		function() { activateTabSearchMode(); },
+
+	'openUrlPrompt':
+		function() { activateOpenUrlPromptMode(); }
 };
 
 // Inspiration and general algorithm taken from sVim.
@@ -341,6 +347,8 @@ function isEmbed(element) { return ["EMBED", "OBJECT"].indexOf(element.tagName) 
 function messageHandler(event){
     if (event.name == "updateSettingsEvent") {
         setSettings(event.message);
+    } else if (event.name == "tabListResult") {
+        onTabListResult(event.message.tabs);
     }
 }
 

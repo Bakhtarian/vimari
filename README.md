@@ -99,6 +99,12 @@ page as if you were in insert mode.
 action. This is done by specifying an array of bindings in the 
 configuration file, like so: `"goToPageTop": ["g g", "shift+k"]`.
 
+**Search Engine URL** - The search engine used by <kbd>⇧</kbd><kbd>o</kbd> (`searchEngineUrl`
+in the configuration file) when what you type isn't a URL. Defaults to DuckDuckGo. Note that
+<kbd>⇧</kbd><kbd>o</kbd> is a simplified stand-in for Vimium's omnibar: Safari's extension API
+doesn't expose bookmarks or history, so it just opens whatever URL or search query you type in a
+new tab, with no suggestions.
+
 
 ### Keyboard Bindings
 
@@ -125,6 +131,8 @@ These bindings are the ones set by default, however you are able to change them 
     q       Previous tab
     x       Close current tab
     t       Open new tab
+    T       Search open tabs
+    O       Open a URL or search query in a new tab
 
 `Vimari v2.1+`
 

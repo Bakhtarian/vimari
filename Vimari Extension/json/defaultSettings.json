@@ -4,6 +4,7 @@
   "detectByCursorStyle": false,
   "scrollSize": 150,
   "openTabUrl": "https://duckduckgo.com/",
+  "searchEngineUrl": "https://duckduckgo.com/?q=",
   "modifier": "",
   "smoothScroll": true,
   "scrollDuration": 25,
@@ -27,6 +28,8 @@
       "tabBack": "q",
       "closeTab": "x",
       "openTab": "t",
-      "duplicateTab": "y t"
+      "duplicateTab": "y t",
+      "tabSearch": "shift+t",
+      "openUrlPrompt": "shift+o"
   }
 }

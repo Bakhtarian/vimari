@@ -118,3 +118,51 @@ describe('stripProtocolAndWww', () => {
         expect(stripProtocolAndWww(url)).to.equal('specific-domain.com');
     });
 });
+
+describe('looksLikeUrl', () => {
+    const looksLikeUrl = window.looksLikeUrl;
+
+    it('returns true for a bare domain', () => {
+        expect(looksLikeUrl('example.com')).to.be.ok();
+    });
+
+    it('returns true for a domain with a path', () => {
+        expect(looksLikeUrl('example.com/path/to/page')).to.be.ok();
+    });
+
+    it('returns true for a URL with an explicit scheme', () => {
+        expect(looksLikeUrl('https://example.com')).to.be.ok();
+    });
+
+    it('returns true for localhost, with or without a port', () => {
+        expect(looksLikeUrl('localhost')).to.be.ok();
+        expect(looksLikeUrl('localhost:3000')).to.be.ok();
+        expect(looksLikeUrl('localhost:3000/admin')).to.be.ok();
+    });
+
+    it('returns false for a plain search query', () => {
+        expect(looksLikeUrl('best pizza in town')).to.not.be.ok();
+    });
+
+    it('returns false for a single word with no dot', () => {
+        expect(looksLikeUrl('github')).to.not.be.ok();
+    });
+});
+
+describe('resolveOmnibarUrl', () => {
+    const resolveOmnibarUrl = window.resolveOmnibarUrl;
+    const searchEngineUrl = 'https://duckduckgo.com/?q=';
+
+    it('adds https:// to a bare domain', () => {
+        expect(resolveOmnibarUrl('example.com', searchEngineUrl)).to.equal('https://example.com');
+    });
+
+    it('leaves a URL with an explicit scheme untouched', () => {
+        expect(resolveOmnibarUrl('http://example.com', searchEngineUrl)).to.equal('http://example.com');
+    });
+
+    it('sends a plain query to the configured search engine', () => {
+        expect(resolveOmnibarUrl('best pizza in town', searchEngineUrl))
+            .to.equal('https://duckduckgo.com/?q=best%20pizza%20in%20town');
+    });
+});

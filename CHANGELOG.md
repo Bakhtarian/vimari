@@ -1,6 +1,11 @@
 Changelog
 -------------
 
+### Unreleased
+
+* Add tab search on <kbd>shift+t</kbd> (`T`): search and jump to any open tab in the current window.
+* Add a simplified quick-open prompt on <kbd>shift+o</kbd> (`O`): type a URL or search query to open it in a new tab. Note this does not include history/bookmark suggestions like Vimium's, since Safari's extension API doesn't expose that data.
+
 ### 2.1.1
 
 * Rebuild for Apple Silicon

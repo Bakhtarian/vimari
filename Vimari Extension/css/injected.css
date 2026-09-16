@@ -112,3 +112,66 @@ div.internalVimiumHintMarker > .matchingCharacter {
   -webkit-user-select:none;
 }
 
+.vimiumOmnibar {
+  position: fixed !important;
+  top: 20% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 500px !important;
+  max-width: 90vw !important;
+  background-color: #fff !important;
+  border: 1px solid #b3b3b3 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25) !important;
+  z-index: 2147483647 !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  overflow: hidden !important;
+}
+
+.vimiumOmnibarInput {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 12px 14px !important;
+  font-size: 16px !important;
+  border: none !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  outline: none !important;
+  color: #222 !important;
+  background: #fff !important;
+}
+
+.vimiumOmnibarList {
+  max-height: 320px !important;
+  overflow-y: auto !important;
+}
+
+.vimiumOmnibarListItem {
+  display: block !important;
+  padding: 8px 14px !important;
+  cursor: pointer !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.vimiumOmnibarListItem.selected {
+  background-color: #eef3fc !important;
+}
+
+.vimiumOmnibarTitle {
+  display: block !important;
+  font-size: 13px !important;
+  color: #222 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.vimiumOmnibarUrl {
+  display: block !important;
+  font-size: 11px !important;
+  color: #888 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
